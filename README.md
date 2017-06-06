@@ -1,7 +1,7 @@
 Install Weave Cloud agents using Helm
 
 ```
-helm install --name weave-cloud --namespace kube-system --set ServiceToken=7dhiomxfmsur8gurmhay67o8rom3g683 vendor/weave-cloud
+helm install --name weave-cloud --namespace kube-system --set ServiceToken=${WEAVE_CLOUD_DEMO_TOKEN} vendor/weave-cloud
 ```
 
 Install Draft chart
