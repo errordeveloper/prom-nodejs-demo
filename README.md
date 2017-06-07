@@ -34,6 +34,6 @@ ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadB
 
 Next, let's try to count how many hits do we get
 ```
-git checkout v2-request-counter
+git checkout v2-hit-counter
 cat README.md
 ```
