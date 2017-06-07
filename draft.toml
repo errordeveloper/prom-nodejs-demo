@@ -1,6 +1,0 @@
-[environments]
-  [environments.development]
-    name = "nodejs-demo"
-    namespace = "default"
-    watch = true
-    watch_delay = 2
