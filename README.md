@@ -24,6 +24,6 @@ helm install --name draft --namespace kube-system vendor/draftd
 
 Now, checkout the first version of the app
 ```
-git checkout v1-hello-world
+git checkout -q v1-hello-world
 cat README.md
 ```
