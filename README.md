@@ -24,6 +24,13 @@ And have a look at the count
 curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/metrics
 ```
 
+Try scaling it up a bit
+```
+kubectl scale deployment nodejs-demo --replicas 3
+```
+
+Observe that scale being reflected in `sum(up{job="default/nodejs-demo"}) by (job)` graph.
+
 Well, our hit counter is really really basic. Prometheus does add-up these number and we don't have to
 care about persistance, but we have no idea which requests may be failing with an error 500 or soemthing,
 and which may be taking too long.
