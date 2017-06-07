@@ -1,30 +1,18 @@
-const http = require('http');
+const restify = require('restify');
+const promBundle = require('restify-prom-bundle');
+
 const port = 8080;
 
-const metrics = {
-  hits: 0
-}
+const server = restify.createServer();
 
-const requestHandler = (request, response) => {
-  console.log(request.url);
-  metrics.hits += 1;
+server.pre(promBundle.preMiddleware(server, {}));
 
-  if (request.url === '/') {
-    response.end(`Hello, you are visitor number ${metrics.hits}!`);
-  }
+server.get('/', (req, res, done) => {
+  res.send('Hello, friend! We are in stelth mode... See you later.');
+  done();
+});
 
-  if (request.url === '/metrics') {
-    response.end(`http_requests_total ${metrics.hits.toFixed(2)}\n`);
-  }
-}
-
-const server = http.createServer(requestHandler);
-
-server.listen(port, (err) => {
-  if (err) {
-    return console.log(err);
-  }
-
-  console.log(`server is listening on ${port}`);
-})
+server.listen(port, () => {
+  console.log(`server is listening on port ${port}`);
+});
 
