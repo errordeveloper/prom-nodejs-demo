@@ -1,28 +1,18 @@
-> This demo requires a Kubernetes cluster with functional external load balancing and ingress, e.g. GKE. 
+# v1: Hello, World!
 
-Install Weave Cloud agents using Helm
-
+First, let's take a loot at the code
 ```
-helm install --name weave-cloud --namespace kube-system --set ServiceToken=${WEAVE_CLOUD_DEMO_TOKEN} vendor/weave-cloud
-```
-
-Install Draft chart
-```
-helm install --name draft --namespace kube-system vendor/draftd
-```
-
-Take a loot at the code
-```
-git checkout v1-hello-world
 cat index.js
 ```
+
+There are other files, like `draft.toml`, stuff in `chart/` and a `Dockerfile`.
 
 Deploy it to Kubernetes
 ```
 draft up
 ```
 
-Print IP address
+Get external IP address
 ```
 kubectl get svc nodejs-demo
 ```
@@ -34,11 +24,11 @@ curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingr
 
 Throw some load at it
 ```
-ab -n b00000 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
+ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
 ```
 
 Add metrics code
 ```
-git checkout v2-basic-prom-metrics
+git checkout v2-request-counter
 cat README.md
 ```
