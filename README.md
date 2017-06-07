@@ -1,4 +1,4 @@
-# v2: Request Counter
+# v2: Hit Counter
 
 First, let's take a look at the new version of the code
 ```
