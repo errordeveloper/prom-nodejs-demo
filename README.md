@@ -12,9 +12,14 @@ Deploy it to Kubernetes
 draft up
 ```
 
-Get external IP address
+Wait for external IP address
 ```
-kubectl get svc nodejs-demo
+kubectl get svc nodejs-demo --watch
+```
+
+Handy command to grab the IP
+```
+kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 ```
 
 Check it out
