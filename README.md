@@ -33,6 +33,6 @@ Find new metrics with request tags in Weave Cloud notebook.
 
 That's it
 ```
-git checkout v5-finish
+git checkout -q v5-finish
 ./cleanup.sh
 ```
