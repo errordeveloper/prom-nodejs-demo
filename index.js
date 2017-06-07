@@ -14,12 +14,7 @@ const requestHandler = (request, response) => {
   }
 
   if (request.url === '/metrics') {
-    response.end([
-        '# HELP http_requests_total The total number of HTTP requests.',
-        '# TYPE http_requests_total counter',
-        `http_requests_total ${metrics.hits.toFixed(2)}`,
-        '',
-    ].join('\n'));
+    response.end(`http_requests_total ${metrics.hits.toFixed(2)}\n`);
   }
 }
 
