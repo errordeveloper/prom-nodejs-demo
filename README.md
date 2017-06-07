@@ -1,6 +1,6 @@
 # v1: Hello, World!
 
-First, let's take a loot at the code
+First, let's take a look at the code
 ```
 cat index.js
 ```
@@ -32,7 +32,7 @@ Throw some load at it
 ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
 ```
 
-Add metrics code
+Next, let's try to count how many hits do we get
 ```
 git checkout v2-request-counter
 cat README.md
