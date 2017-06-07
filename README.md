@@ -24,12 +24,12 @@ kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
 
 Check it out
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
+curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
 ```
 
 Throw some load at it
 ```
-ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`
+ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
 ```
 
 Add metrics code
