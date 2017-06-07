@@ -29,6 +29,6 @@ curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingr
 
 Next we will add Prometheus `/metrics` code
 ```
-git checkout v3-basic-prom-metrics
+git checkout -q v3-basic-prom-metrics
 cat README.md
 ```
