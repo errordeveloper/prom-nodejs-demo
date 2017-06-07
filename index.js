@@ -1,9 +1,12 @@
 const http = require('http');
 const port = 8080;
 
+var hits = 0;
+
 const requestHandler = (request, response) => {
   console.log(request.url);
-  response.end(`Hello, London Node.js devs!`);
+  hits += 1;
+  response.end(`Hello, you are visitor number ${hits}!`);
 }
 
 const server = http.createServer(requestHandler);
