@@ -37,6 +37,6 @@ and which may be taking too long.
 
 Next we will add a Prometheus client library, which will get us more decent metrics
 ```
-git checkout v3-using-prom-lib
+git checkout v4-prom-client
 cat README.md
 ```
