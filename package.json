@@ -6,7 +6,8 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "restify-prom-bundle": "^1.0.1",
-    "restify": "^4.3.0"
+    "prometheus-gc-stats": "^0.4.0",
+    "restify": "^4.3.0",
+    "restify-prom-bundle": "git+https://github.com/errordeveloper/restify-prom-bundle.git"
   }
 }
