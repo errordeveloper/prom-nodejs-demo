@@ -19,7 +19,7 @@ helm install --name weave-cloud --namespace kube-system --set ServiceToken=${WEA
 
 Install Draft chart
 ```
-helm install --name draft --namespace kube-system vendor/draftd
+helm install --name draft --namespace kube-system vendor/draft
 ```
 
 Now, checkout the first version of the app
