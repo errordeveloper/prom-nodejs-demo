@@ -86,3 +86,5 @@ items:
             - name: scope-plugins
               hostPath:
                 path: /var/run/scope/plugins
+      updateStrategy:
+        type: RollingUpdate

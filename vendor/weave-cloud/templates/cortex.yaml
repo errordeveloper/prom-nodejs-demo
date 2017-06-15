@@ -15,15 +15,27 @@ items:
         name: weave-cortex
     rules:
       - apiGroups:
-          - '*'
+          - ''
         resources:
-          - '*'
+          - nodes
+          - pods
+          - services
+          - endpoints
         verbs:
-          - '*'
+          - get
+          - list
+          - watch
+      - apiGroups:
+          - ''
+        resources:
+          - configmaps
+        verbs:
+          - get
       - nonResourceURLs:
-          - '*'
+          - /metrics
+          - /api/v1/nodes/*/proxy/metrics
         verbs:
-          - '*'
+          - get
   - apiVersion: rbac.authorization.k8s.io/v1beta1
     kind: ClusterRoleBinding
     metadata:
@@ -63,7 +75,7 @@ items:
                 - '-config.file=/etc/prometheus/prometheus.yml'
                 - '-web.listen-address=:8080'
                 - '-storage.local.engine=none'
-              image: 'prom/prometheus:v1.6.3'
+              image: 'prom/prometheus:v1.6.2'
               imagePullPolicy: IfNotPresent
               ports:
                 - containerPort: 8080
@@ -131,6 +143,8 @@ items:
           tolerations:
             - effect: NoSchedule
               key: node-role.kubernetes.io/master
+      updateStrategy:
+        type: RollingUpdate
   - apiVersion: v1
     kind: ConfigMap
     metadata:
