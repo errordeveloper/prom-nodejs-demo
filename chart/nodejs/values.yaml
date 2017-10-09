@@ -3,12 +3,6 @@
 # Declare variables to be passed into your templates.
 basedomain: example.com
 replicaCount: 2
-image:
-  registry: docker.io
-  org: library
-  name: node
-  tag: onbuild
-  pullPolicy: IfNotPresent
 service:
   name: node
   type: LoadBalancer
