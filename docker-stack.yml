@@ -1,0 +1,39 @@
+version: '3.3'
+
+networks:
+  monitoring:
+    driver: overlay
+    attachable: true
+
+services:
+  prom-nodejs-demo:
+    image: prom-nodejs-demo
+    ports: ['8080:8080']
+    networks: [monitoring]
+
+  prometheus:
+    image: stefanprodan/swarmprom-prometheus
+    networks: [monitoring]
+    environment:
+      - WEAVE_TOKEN=$TOKEN
+      - JOBS=prom-nodejs-demo:8080
+    command:
+      - '-config.file=/etc/prometheus/weave-cortex.yml'
+      - '-storage.local.engine=none'
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+
+  scope-launcher:
+    image: weaveworks/scope-swarm-launcher
+    networks: [monitoring]
+    command: scope launch --service-token=$TOKEN
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      mode: global
+      restart_policy:
+        condition: none
