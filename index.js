@@ -5,8 +5,15 @@ var hits = 0;
 
 const requestHandler = (request, response) => {
   console.log(request.url);
-  hits += 1;
-  response.end(`Hello, you are visitor number ${hits}!`);
+
+  if (request.url === '/') {
+    hits += 1;
+    response.end('Hello, World!');
+  }
+
+  if (request.url === '/metrics') {
+    response.end(hits.toString());
+  }
 }
 
 const server = http.createServer(requestHandler);
