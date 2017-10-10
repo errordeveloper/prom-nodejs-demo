@@ -23,7 +23,7 @@ cat docker-stack.yml
 
 Let's build and deploy it
 ```
-docker build -t prom-nodejs-demo:v1 .
+docker build -t myapp:v1 .
 docker stack deploy --resolve-image=never --compose-file=docker-stack.yml demo
 ```
 
