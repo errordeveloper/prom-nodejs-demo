@@ -7,7 +7,7 @@ cat index.js
 
 Build and deploy this new version
 ```
-docker build -t prom-nodejs-demo:v2 .
+docker build -t myapp:v2 .
 docker stack deploy --resolve-image=never --compose-file=docker-stack.yml demo
 ```
 
@@ -19,7 +19,7 @@ curl localhost:8080/hits
 
 Scale up and throw some load at it once again
 ```
-docker service scale --detach=false demo_prom-nodejs-demo=3
+docker service scale --detach=false demo_myapp=3
 ab -n 10000 -c 20 http://localhost:8080/
 ```
 And have a look at the count
