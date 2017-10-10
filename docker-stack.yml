@@ -27,6 +27,7 @@ services:
         constraints:
           - node.role == manager
 
+  ## Install Weave Cloud Explore agent (aka Scope probe)
   scope-launcher:
     image: weaveworks/scope-swarm-launcher
     networks: [monitoring]
