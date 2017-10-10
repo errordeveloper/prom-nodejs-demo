@@ -5,5 +5,7 @@ addr="$(kubectl get svc java-demo -o jsonpath='{.status.loadBalancer.ingress[0].
 echo > samples.csv
 
 while true ; do
-  curl -w ",%{time_total},$(date +%s)\n" -s http://${addr}/hits >> samples.csv
+  gtimeout 0.5 curl --write-out ",%{time_total},$(date +%s)\n" --silent --connect-timeout 1 "http://${addr}/hits" >> samples.csv || true
+  printf .
+  sleep 0.5
 done
