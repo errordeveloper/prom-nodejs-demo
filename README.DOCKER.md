@@ -7,29 +7,33 @@ cat index.js
 
 We've added `/metrics` for Prometheus to scrape. As you can see the format is very simple.
 
-Draft is running in another shell, so this should get deployed.
+Let's build and deploy it
+```
+docker build -t myapp:v3 .
+docker stack deploy --resolve-image=never --compose-file=docker-stack.yml demo
+```
 
 Check out what `/metrics` does
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/metrics
+curl http://localhost:8080/metrics
 ```
 
 Throw some load at it once again
 ```
-ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+ab -n 300 -c 100 http://localhost:8080/
 ```
 
 And have a look at the count
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/metrics
+curl http://localhost:8080/metrics
 ```
 
 Try scaling it up a bit
 ```
-kubectl scale deployment nodejs-demo --replicas 3
+docker service scale --detach=false demo_myapp=6
 ```
 
-Observe that scale being reflected in `sum(up{job="default/nodejs-demo"}) by (job)` graph.
+Observe that scale being reflected in `sum(up{job="myapp"}) by (job)` graph.
 
 Well, our hit counter is really really basic. Prometheus does add-up these number and we don't have to
 care about persistance, but we have no idea which requests may be failing with an error 500 or soemthing,
@@ -38,5 +42,5 @@ and which may be taking too long.
 Next we will add a Prometheus client library, which will get us more decent metrics
 ```
 git checkout -q v4-prom-client
-cat README.md
+cat README.DOCKER.md
 ```

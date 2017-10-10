@@ -10,7 +10,7 @@ const requestHandler = (request, response) => {
   metrics.hits += 1;
 
   if (request.url === '/') {
-    response.end(`Hello, you are visitor number ${metrics.hits}!`);
+    response.end('Hello, World!');
   }
 
   if (request.url === '/metrics') {
