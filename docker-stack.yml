@@ -11,6 +11,7 @@ services:
     ports: ['8080:8080']
     networks: [monitoring]
 
+  ## Install Prometheus enabled with `remote_write` via Weave Cloud Monitor
   prometheus:
     image: stefanprodan/swarmprom-prometheus
     networks: [monitoring]

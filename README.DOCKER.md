@@ -7,6 +7,9 @@ cat index.js
 
 We've added `/metrics` for Prometheus to scrape. As you can see the format is very simple.
 
+Also, we've upated `docker-stack.yml` to add Prometheus. We use an image that generates
+config file with `remote_write` setting for Weave Cloud Monitor.
+
 Let's build and deploy it
 ```
 docker build -t myapp:v3 .
