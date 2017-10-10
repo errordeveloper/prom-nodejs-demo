@@ -55,6 +55,6 @@ Hm... may be there is a better way to do this on Kubernetes?
 Checkout v3 to see what this would look like!
 
 ```
-git checkout -q v3-prom-metrics
+git checkout -q v3-basic-prom-metrics
 cat README.md
 ```
