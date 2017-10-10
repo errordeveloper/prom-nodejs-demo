@@ -12,6 +12,8 @@ Setup Swarm on local Docker:
 docker swarm init
 ```
 
+Now, checkout the first version of the app
 ```
 git checkout -q v1-hello-world
+cat README.DOCKER.md
 ```
