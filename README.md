@@ -10,6 +10,10 @@ cat README.md
 > This demo requires a Kubernetes cluster with functional external load balancing and ingress, e.g. GKE. 
 > You also need to have `kubectl`, `draft` and `helm` commands in your shell's search path.
 
+Get Weave Cloud token and set `WEAVE_CLOUD_DEMO_TOKEN` environment variable
+```
+export WEAVE_CLOUD_DEMO_TOKEN=<token>
+```
 Install Weave Cloud agents using Helm
 
 ```
