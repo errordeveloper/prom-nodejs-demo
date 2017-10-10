@@ -15,7 +15,7 @@ services:
     image: stefanprodan/swarmprom-prometheus
     networks: [monitoring]
     environment:
-      - WEAVE_TOKEN=$TOKEN
+      - WEAVE_TOKEN=$WEAVE_CLOUD_DEMO_TOKEN
       - JOBS=myapp:8080
     command:
       - '-config.file=/etc/prometheus/weave-cortex.yml'
@@ -30,7 +30,7 @@ services:
   scope-launcher:
     image: weaveworks/scope-swarm-launcher
     networks: [monitoring]
-    command: scope launch --service-token=$TOKEN
+    command: scope launch --service-token=$WEAVE_CLOUD_DEMO_TOKEN
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
