@@ -5,28 +5,26 @@ First, let's take a look at the new version of the code
 cat index.js
 ```
 
-We've added a counter for vistors who hit `/`, and we can view it at `/hits`. Awesome!
-
-Deploy it to Kubernetes and keep draft running
+Build and deploy this new version
 ```
-draft up
+docker build -t prom-nodejs-demo:v2 .
+docker stack deploy --resolve-image=never --compose-file=docker-stack.yml demo
 ```
 
 Check out what it does now
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+curl localhost:8080
+curl localhost:8080/hits
 ```
 
-Same thing!
-
-Throw some load at it once again
+Scale up and throw some load at it once again
 ```
-ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+docker service scale --detach=false demo_prom-nodejs-demo=3
+ab -n 10000 -c 20 http://localhost:8080/
 ```
-
 And have a look at the count
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/hits
+curl localhost:8080/hits
 ```
 
 Now let's run our load test in another terminal for a longer period...
@@ -35,13 +33,13 @@ And we can also write a simple script to sample hit counts and store those in a 
 Of course, we don't have time to look mess around with JMeter or anything like that, we
 will write this in bash!
 ```
-cat collect_samples.sh
+cat collect_samples_docker.sh
 ```
 
 LGTM; run it!
 
 ```
-./collect_samples.sh
+./collect_samples_docker.sh
 ```
 
 So what could possibly go wrong?
@@ -56,5 +54,5 @@ Checkout v3 to see what this would look like!
 
 ```
 git checkout -q v3-prom-metrics
-cat README.md
+cat README.DOCKER.md
 ```
