@@ -7,7 +7,7 @@ services:
 
   scope-launcher:
     image: weaveworks/scope-swarm-launcher
-    command: scope launch --service-token=$TOKEN
+    command: scope launch --service-token=$WEAVE_CLOUD_DEMO_TOKEN
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
