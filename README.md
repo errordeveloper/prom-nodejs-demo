@@ -3,8 +3,8 @@
 
 Get the code
 ```
-git clone https://github.com/errordeveloper/nodejs-prometheus-demo
-cd nodejs-prometheus-demo
+git clone https://github.com/errordeveloper/prom-nodejs-demo
+cd prom-nodejs-demo
 cat README.md
 ```
 
