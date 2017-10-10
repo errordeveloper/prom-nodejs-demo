@@ -6,8 +6,8 @@ networks:
     attachable: true
 
 services:
-  prom-nodejs-demo:
-    image: prom-nodejs-demo
+  myapp:
+    image: myapp:v4
     ports: ['8080:8080']
     networks: [monitoring]
 

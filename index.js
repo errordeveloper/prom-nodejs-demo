@@ -8,7 +8,7 @@ const server = restify.createServer();
 epimetheus.instrument(server);
 
 server.get('/', (req, res, done) => {
-  res.send('Hello, friend! We are in stealth mode... See you later.');
+  res.send('Hello, friend! We are still in stealth mode... See you later.');
   done();
 });
 

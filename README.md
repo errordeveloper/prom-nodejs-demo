@@ -19,17 +19,17 @@ Try scaling it up a bit more
 kubectl scale deployment nodejs-demo --replicas 6
 ```
 
-Throw even load at it once again
+Throw even more load at it once again
 ```
 ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
 ```
 
-And have a look at the count
+And have a look at the metrics
 ```
 curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/metrics
 ```
 
-Find new metrics with request tags in Weave Cloud notebook.
+Find new metrics with HTTP request lables in Weave Cloud notebook.
 
 That's it
 ```
