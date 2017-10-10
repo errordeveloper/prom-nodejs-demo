@@ -32,7 +32,6 @@ Manual QA step
 curl localhost:8080
 ```
 
-
 As millions of users will be visiting our app, let's throw some load at it and
 make sure it can stand up to it
 ```
