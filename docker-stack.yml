@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   prom-nodejs-demo:
-    image: prom-nodejs-demo
+    image: prom-nodejs-demo:v1
     ports: ['8080:8080']
 
   scope-launcher:
