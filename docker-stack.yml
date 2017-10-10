@@ -5,6 +5,7 @@ services:
     image: myapp:v1
     ports: ['8080:8080']
 
+  ## Install Weave Cloud Explore agent (aka Scope probe)
   scope-launcher:
     image: weaveworks/scope-swarm-launcher
     command: scope launch --service-token=$WEAVE_CLOUD_DEMO_TOKEN
