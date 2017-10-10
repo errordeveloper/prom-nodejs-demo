@@ -15,32 +15,28 @@ We will be deploying dozens of microservices, and will probably add some AI
 components to personalise the greetings without knowing up-front who the
 user is.
 
-There are other files, like `draft.toml`, stuff in `chart/` and a `Dockerfile`.
-
-Deploy it to Kubernetes
+There are `Dockerfile` and `docker-stack.yml` already written and checked-in
 ```
-draft up
-```
-
-Wait for external IP address
-```
-kubectl get svc nodejs-demo --watch
+cat Dockerfile
+cat docker-stack.yml
 ```
 
-Handy command to grab the IP
+Let's build and deploy it
 ```
-kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'
+docker build -t prom-nodejs-demo:v1 .
+docker stack deploy --resolve-image=never --compose-file=docker-stack.yml demo
 ```
 
-Check it out
+Manual QA step
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+curl localhost:8080
 ```
+
 
 As millions of users will be visiting our app, let's throw some load at it and
 make sure it can stand up to it
 ```
-ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+ab -n 1000 -c 20 http://localhost:8080/
 ```
 
 That's great! But how are we going to know we provide good service and every user
@@ -49,5 +45,5 @@ sees a greeting very quickly?
 Checkout next version of the app to find out more...
 ```
 git checkout -q v2-hit-counter
-cat README.md
+cat README.DOCKER.md
 ```
