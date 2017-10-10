@@ -16,7 +16,7 @@ services:
     networks: [monitoring]
     environment:
       - WEAVE_TOKEN=$TOKEN
-      - JOBS=prom-nodejs-demo:8080
+      - JOBS=myapp:8080
     command:
       - '-config.file=/etc/prometheus/weave-cortex.yml'
       - '-storage.local.engine=none'
