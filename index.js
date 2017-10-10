@@ -11,7 +11,7 @@ const requestHandler = (request, response) => {
     response.end('Hello, World!');
   }
 
-  if (request.url === '/metrics') {
+  if (request.url === '/hits') {
     response.end(hits.toString());
   }
 }
