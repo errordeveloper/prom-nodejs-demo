@@ -19,6 +19,7 @@ spec:
         args:
         - start
         - --registry-url={{ .Values.registry.url }}
+        - --registry-org={{ .Values.registry.org }}
         - --registry-auth={{ .Values.registry.authtoken }}
         {{- if .Values.debug }}
         - --debug
