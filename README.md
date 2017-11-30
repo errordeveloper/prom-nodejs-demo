@@ -32,7 +32,7 @@ kubectl scale deployment nodejs-demo --replicas 3
 Observe that scale being reflected in `sum(up{job="default/nodejs-demo"}) by (job)` graph.
 
 Well, our hit counter is really really basic. Prometheus does add-up these number and we don't have to
-care about persistance, but we have no idea which requests may be failing with an error 500 or soemthing,
+care about persistence, but we have no idea which requests may be failing with an error 500 or something,
 and which may be taking too long.
 
 Next we will add a Prometheus client library, which will get us more decent metrics
