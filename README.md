@@ -29,7 +29,7 @@ And have a look at the metrics
 curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/metrics
 ```
 
-Find new metrics with HTTP request lables in Weave Cloud notebook.
+Find new metrics with HTTP request labels in Weave Cloud notebook.
 
 That's it
 ```
