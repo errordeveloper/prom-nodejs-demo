@@ -5,7 +5,7 @@ First, let's take a look at the new version of the code
 cat index.js
 ```
 
-We've added a counter for vistors who hit `/`, and we can view it at `/hits`. Awesome!
+We've added a counter for visitors who hit `/`, and we can view it at `/hits`. Awesome!
 
 Deploy it to Kubernetes and keep draft running
 ```
