@@ -12,5 +12,5 @@ service:
     externalPort: 80
     internalPort: 44135
 registry:
-  url: quay.io
+  url: quay.io/errordeveloper
   authtoken: ewogICJ1c2VybmFtZSI6ICJlcnJvcmRldmVsb3Blcitub2RlanNfcHJvbWV0aGV1c19kZW1vIiwKICAicGFzc3dvcmQiOiAiNkxFSVZPSzc4S0g1S0c2MzFRUzBTNkU1UDU1UTY4UEY5RlNZR09MU0Q3M0dJNlo4QkdKOElaQjkwSFE0QVFMVCIsCiAgImVtYWlsIjogIiIKfQo=
