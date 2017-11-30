@@ -17,7 +17,7 @@ export WEAVE_CLOUD_DEMO_TOKEN=<token>
 Install Weave Cloud agents using Helm
 
 ```
-helm install --name weave-cloud --namespace kube-system --set ServiceToken=${WEAVE_CLOUD_DEMO_TOKEN} vendor/weave-cloud
+kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/v1.7/weave-cloud.yaml?service-token=${WEAVE_CLOUD_DEMO_TOKEN}&cortex-agent-scrape-interval=5s"
 ```
 
 Install Draft chart
