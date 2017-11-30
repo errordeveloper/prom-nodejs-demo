@@ -33,11 +33,11 @@ spec:
         livenessProbe:
           httpGet:
             path: /ping
-            port: {{ .Values.service.http.internalPort }}
+            port: 8080
         readinessProbe:
           httpGet:
             path: /ping
-            port: {{ .Values.service.http.internalPort }}
+            port: 8080
         volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-socket
