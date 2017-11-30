@@ -8,9 +8,9 @@ cat index.js
 Our startup is building the best greeting app, we are launching it today!
 Everyone will be talking about it on Hacker News tomorrow, you bet.
 We are all set to launch this app and we have picked the best tools. We will
-be seeing millions of vistiors. The app is very simple right now, but we will
+be seeing millions of visitors. The app is very simple right now, but we will
 add more features next week. Right now, we just want to make sure we can run
-it on Docker, as it's the way to go, and of course we are buidling it in JS.
+it on Docker, as it's the way to go, and of course we are building it in JS.
 We will be deploying dozens of microservices, and will probably add some AI
 components to personalise the greetings without knowing up-front who the
 user is.
