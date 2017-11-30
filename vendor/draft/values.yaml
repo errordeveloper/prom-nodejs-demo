@@ -3,10 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 3
 image:
-  registry: docker.io
-  org: errordeveloper
-  name: draft
-  tag: canary
+  repository: microsoft/draft
+  tag: v0.8.0
   pullPolicy: Always
 debug: true
 service:
@@ -15,5 +13,4 @@ service:
     internalPort: 44135
 registry:
   url: quay.io
-  org: errordeveloper
   authtoken: ewogICJ1c2VybmFtZSI6ICJlcnJvcmRldmVsb3Blcitub2RlanNfcHJvbWV0aGV1c19kZW1vIiwKICAicGFzc3dvcmQiOiAiNkxFSVZPSzc4S0g1S0c2MzFRUzBTNkU1UDU1UTY4UEY5RlNZR09MU0Q3M0dJNlo4QkdKOElaQjkwSFE0QVFMVCIsCiAgImVtYWlsIjogIiIKfQo=
