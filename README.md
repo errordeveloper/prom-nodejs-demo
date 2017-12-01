@@ -12,6 +12,11 @@ Deploy it to Kubernetes and keep draft running in a new terminal window
 draft up
 ```
 
+Grab the IP
+```
+ip="$(kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
+```
+
 Check out what it does now
 ```
 curl "http://${ip}/reverse?string=banana"
