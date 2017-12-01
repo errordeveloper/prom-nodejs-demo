@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: load-test
+  name: load-test
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: load-test
+  template:
+    metadata:
+      labels:
+        name: load-test
+    spec:
+      containers:
+      - image: errordeveloper/prom-nodejs-demo-load-test:latest
+        imagePullPolicy: Always
+        name: load-test
+        args: [ '-period', '5s', 'ab', '-n', '1000', '-c', '80', 'http://nodejs-demo/reverse?string=apache' ]
+        ports:
+        - name: metrics
+          containerPort: 9152
