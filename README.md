@@ -9,6 +9,11 @@ We've added `/metrics` for Prometheus to scrape. As you can see the format is ve
 
 Draft is running in another shell, so this should get deployed.
 
+Grab the IP
+```
+ip="$(kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
+```
+
 Check out what `/metrics` does
 ```
 curl "http://${ip}/metrics"
