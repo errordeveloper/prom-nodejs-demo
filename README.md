@@ -11,17 +11,17 @@ Draft is running in another shell, so this should get deployed.
 
 Check out what `/metrics` does
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/metrics
+curl "http://${ip}/metrics"
 ```
 
 Throw some load at it once again
 ```
-ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+ab -n 300 -c 100 "http://${ip}/"
 ```
 
 And have a look at the count
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/metrics
+curl "http://${ip}/metrics"
 ```
 
 Try scaling it up a bit
