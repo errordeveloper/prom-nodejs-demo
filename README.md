@@ -19,9 +19,9 @@ Try scaling it up a bit more
 kubectl scale deployment nodejs-demo --replicas 6
 ```
 
-Throw even more load at it once again
+Throw even more load at it once again, this time we will run `ab` inside the cluster
 ```
-ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+kubectl apply -f ./load-test
 ```
 
 And have a look at the metrics
