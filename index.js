@@ -9,8 +9,8 @@ const welcomeToStringlyApp = (frontendHostname) => {
 
     Here is some basic documentation to help you get started:
 
-    > curl -s "http://${frontendHostname}/reverse?string=k8s"
-    s8k
+    > curl -s "http://${frontendHostname}/reverse?string=banana"
+    ananab
 
     Have fun using stringly app :-)
   `
