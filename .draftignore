@@ -1,0 +1,6 @@
+*.swp
+*.tmp
+*.temp
+.git*
+samples.csv
+README.md
