@@ -5,7 +5,7 @@ const port = 8080;
 
 let hits = 0;
 
-function welcomeToStringlyApp(frontendHostname) {
+function welcomeToStringlyApp (frontendHostname) {
   return `
     Welcome to stringly app!
 
@@ -18,15 +18,15 @@ function welcomeToStringlyApp(frontendHostname) {
   `
 }
 
-function millionDollarStringlyAlgorithm(payloadString) {
+function millionDollarStringlyAlgorithm (payloadString) {
   return payloadString.split('').reverse().join('');
 }
 
-function prometheusMetrics() {
+function prometheusMetrics () {
   return `http_requests_total ${hits}\n`;
 }
 
-const requestHandler = (request, response) => {
+function requestHandler (request, response) {
   console.log(request.url);
   const u = url.parse(request.url, true);
 
