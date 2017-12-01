@@ -11,7 +11,7 @@ function welcomeToStringlyApp (frontendHostname) {
 
     Here is some basic documentation to help you get started:
 
-    > curl -s "http://${frontendHostname}/reverse?string=banana"
+    > curl "http://${frontendHostname}/reverse?string=banana"
     ananab
 
     Have fun using stringly app :-)
