@@ -7,29 +7,29 @@ cat index.js
 
 We've added a counter for visitors who hit `/`, and we can view it at `/hits`. Awesome!
 
-Deploy it to Kubernetes and keep draft running
+Deploy it to Kubernetes and keep draft running in a new terminal window
 ```
 draft up
 ```
 
 Check out what it does now
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+curl "http://${ip}/reverse?string=banana"
 ```
 
 Same thing!
 
 Throw some load at it once again
 ```
-ab -n 300 -c 100 http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/
+ab -n 300 -c 100 http://${ip}/
 ```
 
 And have a look at the count
 ```
-curl http://`kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}'`/hits
+curl "http://${ip}/hits"
 ```
 
-Now let's run our load test in another terminal for a longer period...
+Now let's run our load test in another terminal window for a longer period...
 
 And we can also write a simple script to sample hit counts and store those in a CSV file.
 Of course, we don't have time to look mess around with JMeter or anything like that, we
