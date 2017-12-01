@@ -1,20 +1,42 @@
 const http = require('http');
+const url = require('url');
+
 const port = 8080;
 
-const metrics = {
-  hits: 0
+let hits = 0;
+
+function welcomeToStringlyApp(frontendHostname) {
+  return `
+    Welcome to stringly app!
+
+    Here is some basic documentation to help you get started:
+
+    > curl -s "http://${frontendHostname}/reverse?string=banana"
+    ananab
+
+    Have fun using stringly app :-)
+  `
+}
+
+function millionDollarStringlyAlgorithm(payloadString) {
+  return payloadString.split('').reverse().join('');
+}
+
+function prometheusMetrics() {
+  return `http_requests_total ${hits}\n`;
 }
 
 const requestHandler = (request, response) => {
   console.log(request.url);
-  metrics.hits += 1;
+  const u = url.parse(request.url, true);
 
-  if (request.url === '/') {
-    response.end('Hello, World!');
-  }
-
-  if (request.url === '/metrics') {
-    response.end(`http_requests_total ${metrics.hits.toFixed(2)}\n`);
+  if (u.pathname === '/reverse' && u.query.string !== undefined) {
+    hits += 1;
+    response.end(millionDollarStringlyAlgorithm(u.query.string));
+  } else if (request.url === '/metrics') {
+    response.end(prometheusMetrics());
+  } else {
+    response.end(welcomeToStringlyApp(request.headers.host));
   }
 }
 
