@@ -18,12 +18,17 @@ spec:
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
+          initialDelaySeconds: 30
+          periodSeconds: 5
           httpGet:
             path: /
             port: {{ .Values.service.internalPort }}
         readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 1
           httpGet:
             path: /
             port: {{ .Values.service.internalPort }}
         resources:
 {{ toYaml .Values.resources | indent 12 }}
+      terminationGracePeriodSeconds: 3
