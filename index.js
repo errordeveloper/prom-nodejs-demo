@@ -7,14 +7,14 @@ let hits = 0;
 
 function welcomeToStringlyApp (frontendHostname) {
   return `
-    Welcome to stringly app!
+    Welcome to Stringly™ app!
 
     Here is some basic documentation to help you get started:
 
     > curl "http://${frontendHostname}/reverse?string=banana"
     ananab
 
-    Have fun using stringly app :-)
+    Have fun using Stringly™ app :-)
   `
 }
 
