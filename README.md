@@ -1,6 +1,5 @@
 # v1: Hello, World!
 
-
 The world has been patiently waiting for the launch of Stringly™, a platform for
 distributing highly optimized strings that is sure to disrupt the global string
 market. The VC checks have cleared and its time to give the people what they want.
