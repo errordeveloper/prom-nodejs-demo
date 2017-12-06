@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-addr="$(kubectl get svc java-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
+addr="$(kubectl get svc nodejs-demo -o jsonpath='{.status.loadBalancer.ingress[0].ip}')"
 
 echo > samples.csv
 
